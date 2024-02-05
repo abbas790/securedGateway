@@ -1,0 +1,32 @@
+
+
+spring:
+  application:
+    name: SecureGateway
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/securedgateway
+    username: postgres
+    password: 786@admin
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+    main:
+      web-application-type: servlet
+  jpa:
+    hibernate:
+      ddl-auto: update
+ 
+security:
+    authentication:
+      jwt:
+        # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
+        base64-secret: MTU0ZTZjYzg4OWM2NmNkNTc2MGFkM2EzOTIxYzA1Mjc2YzhhNGQ4OWQ5YWY4NzFiMDVjNDk2NTI0NjkwZWJlMDUxYjRkY2E5YjkwN2Q1MjM0YzQ4MjcxM2Q4ZWRiMjY1YmYxMTBmZjNjNDQzNTMzMWI0Yzk3ZGZjNjk3ZmZlNDA=
+        # Token is valid 24 hours
+        token-validity-in-seconds: 86400
+        token-validity-in-seconds-for-remember-me: 2592000
+    
+    
+    
+server:
+  port: 8085
